@@ -1,114 +1,109 @@
-	<?php
+<?php
 	
-		if($_SERVER["REQUEST_METHOD"] == "GET")
-		{
-		
-			?>
+	if($_SERVER["REQUEST_METHOD"] == "GET")
+	{
+?>
 <html>
-	
 	<head>
-		
 		<title>  </title>
-	
 	</head>
 	
-	<body>
+<body>
 	
 
 		
-		<form method="post" action="LAB3.php">
-			Invoice Item 1: <input type="text" name="firstInvoice"></input>
-			Item Price 1: <input type="text" name="firstPrice"></input>
-			Invoice Item 2: <input type="text" name="secondInvoice"></input>
-			Item Price 2: <input type="text" name="secondPrice"></input>
-			Invoice Item 3: <input type="text" name="thirdInvoice"></input>
-			Item Price 3: <input type="text" name="thirdPrice"></input>
-			Invoice Item 4: <input type="text" name="fourthInvoice"></input>
-			Item Price 4: <input type="text" name="fourthPrice"></input>
+<form method="post" action="LAB3.php">
+	Invoice Item 1: <input type="text" name="firstInvoice"></input>
+	Item Price 1: <input type="text" name="firstPrice"></input>
+	Invoice Item 2: <input type="text" name="secondInvoice"></input>
+	Item Price 2: <input type="text" name="secondPrice"></input>
+	Invoice Item 3: <input type="text" name="thirdInvoice"></input>
+	Item Price 3: <input type="text" name="thirdPrice"></input>
+	Invoice Item 4: <input type="text" name="fourthInvoice"></input>
+	Item Price 4: <input type="text" name="fourthPrice"></input>
 		
-		Check this box you want to include tax at a rate of 7%:<input type="checkbox" value="applyTax" name="applyTax">
-			<input type="submit" value="submit" name="submit">
-		</form>
+	Check this box you want to include tax at a rate of 7%:<input type="checkbox" value="applyTax" name="applyTax">
+	<input type="submit" value="submit" name="submit">
+</form>
 
-	</body>
+</body>
 	
 	
 </html>
-	<?php
+<?php
 	}
  else if ($_SERVER["REQUEST_METHOD"] == "POST")
-		{
+	{
 			
-		$firstInvoice = $_POST['firstInvoice'];
-		$firstPrice = $_POST['firstPrice'];
-		$secondInvoice = $_POST['secondInvoice'];
-		$secondPrice = $_POST['secondPrice'];
-		$thirdInvoice = $_POST['thirdInvoice'];
-		$thirdPrice = $_POST['thirdPrice'];
-		$fourthInvoice = $_POST['fourthInvoice'];
-		$fourthPrice = $_POST['fourthPrice'];
+	$firstInvoice = $_POST['firstInvoice'];
+	$firstPrice = $_POST['firstPrice'];
+	$secondInvoice = $_POST['secondInvoice'];
+	$secondPrice = $_POST['secondPrice'];
+	$thirdInvoice = $_POST['thirdInvoice'];
+	$thirdPrice = $_POST['thirdPrice'];
+	$fourthInvoice = $_POST['fourthInvoice'];
+	$fourthPrice = $_POST['fourthPrice'];
 		
-		$tax_rate = 1.07;
+	$tax_rate = 1.07;
 		
-		$sub_total = $firstPrice + $secondPrice + $thirdPrice + $fourthPrice;
+	$sub_total = $firstPrice + $secondPrice + $thirdPrice + $fourthPrice;
 		
-		if(isset ($_POST['applyTax'] ))
-		{
-			$total = $sub_total * $tax_rate;
-			$tax = $total - $sub_total;
+	if(isset ($_POST['applyTax'] ))
+	{
+		$total = $sub_total * $tax_rate;
+		$tax = $total - $sub_total;
 		
-		} 
-		else{
+	} 
+	else{
 			
-			$total = $firstPrice + $secondPrice + $thirdPrice + $fourthPrice;
-			$tax = "0.00";
-		}
+		$total = $firstPrice + $secondPrice + $thirdPrice + $fourthPrice;
+		$tax = "0.00";
+	}
 		
 		
-			?>
+?>
 			
-			<?php
-			$output = <<<EOF
+<?php
+	$output = <<<EOF
 <html>
-<head>
-<title>
-</title>
-</head>
+	<head>
+		<title></title>
+	</head>
 <body>
 	<table>
-		<tr>
-		<td> 
-			Invoice Item 1: $firstInvoice
-			</td>
-			<td>
-			Item 1 Price: $firstPrice
-		</td>
-		</tr>
-		<tr>
-		<td>
-		Invoice Item 2: $secondInvoice
-		</td>
-		<td>
-			Item 2 Price: $secondPrice
-		</td>
-		</tr>
-		<tr>
-		<td>
-		Invoice Item 3: $thirdInvoice
-		</td>
-		<td>
-			Item 3 Price: $thirdPrice
-		</td>
-		</tr>
-		<tr>
-		<td>
-		Invoice Item 4: $fourthInvoice
-		</td>
-		<td>
-			Item 4 Price: $fourthPrice
-		</td>
-		</tr>
-	</table>
+	<tr>
+	<td> 
+	Invoice Item 1: $firstInvoice
+	</td>
+	<td>
+	Item 1 Price: $firstPrice
+	</td>
+	</tr>
+	<tr>
+	<td>
+	Invoice Item 2: $secondInvoice
+	</td>
+	<td>
+	Item 2 Price: $secondPrice
+	</td>
+	</tr>
+	<tr>
+	<td>
+	Invoice Item 3: $thirdInvoice
+	</td>
+	<td>
+	Item 3 Price: $thirdPrice
+	</td>
+	</tr>
+	<tr>
+	<td>
+	Invoice Item 4: $fourthInvoice
+	</td>
+	<td>
+	Item 4 Price: $fourthPrice
+	</td>
+	</tr>
+</table>
 	<br>
 	Subtotal = $sub_total
 	<br>
@@ -120,16 +115,16 @@
 			
 EOF;
 			
-	echo $output
+echo $output
 	
 	
 	
-	?>
-	<?php 
+?>
+<?php 
+}
+else {
+	echo "Page not supported";
 	}
-	else {
-		echo "Page not supported";
-		}
 			
-			?>
+?>
 			
