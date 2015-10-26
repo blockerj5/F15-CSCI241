@@ -1,7 +1,7 @@
  <html>
  	<head></head>
  	<body>
- <pre>
+
  	
  <form name="table" id="table" action="lab4.php" method="post">
       <h1>Multiplication Table Creator</h1>
