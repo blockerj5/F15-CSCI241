@@ -18,20 +18,20 @@
 
 if(isset($_POST['submit']))
  {
-$EmployeeId =$_POST['employeeId'];
-$EmployeeName =$_POST['employeeName'];
-$HourlyWage =$_POST['hourlyWage'];
-$HoursWorked =$_POST['hoursworked'];
+$employeeId =$_POST['employeeId'];
+$employeeName =$_POST['employeeName'];
+$hourlyWage =$_POST['hourlyWage'];
+$hoursWorked =$_POST['hoursworked'];
 
 
-$totalHours=$HoursWorked;
+$totalHours=$hoursWorked;
 
-if ($HoursWorked > 40) 
+if ($hoursWorked > 40) 
 {
 	
-	$OvertimeHours=$HoursWorked - 40;
-	$HoursWorked=40;
-	$OvertimePay=$OvertimeHours * ($HourlyWage * 1.50);
+	$OvertimeHours=$hoursWorked - 40;
+	$hoursWorked=40;
+	$OvertimePay=$OvertimeHours * ($hourlyWage * 1.50);
 		
 } 
 else 
@@ -41,15 +41,15 @@ else
 }
 
 
-$totalWage = $HourlyWage * $HoursWorked;
+$totalWage = $hourlyWage * $hoursWorked;
 $finalWage =$totalWage + $OvertimePay;
 
 $currency = array(100,50,20,10,5,1,0.25,0.10,0.05,0.01);
 
 //Table For Paystub
-echo "PayStub For: ".$EmployeeName. "</br>";
-echo"Name: ".$EmployeeName."</br>";
-echo"ID: ".$EmployeeId."</br>";
+echo "PayStub For: ".$employeeName. "</br>";
+echo"Name: ".$employeeName."</br>";
+echo"ID: ".$employeeId."</br>";
 echo "<table border=1>";
 echo "<tr>";
 echo "<td> </td>";
@@ -58,7 +58,7 @@ echo "<td> Gross Pay </td>";
 echo "</tr>";
 echo "<tr>";
 echo "<td> Regular: </td>";
-echo "<td>" .$HoursWorked ."</td>";
+echo "<td>" .$hoursWorked ."</td>";
 echo "<td>" .$totalWage."</td>";
 echo "</tr>";
 echo "<tr>";
@@ -112,20 +112,7 @@ foreach($currency as $nextcurrency)
 }
 
 echo "</table>";
-//Calculate Total Paycheck, assuming no tax and also number and demoninations of the currency
-//Create Table to have infor output to
 
-
-/*echo $EmployeeId; 
-echo $EmployeeName;
-echo $HourlyWage;
-echo $HoursWorked;
- echo $totalWage;
- */
-
-
-//Use If else and have for loops within that use modulus to run through until total number of dollar bills are used
-//If (overtime would be hours worked-40)overtime then add to total wage, else overtime less than or equal to 0 then add nothing
 
  }
     
