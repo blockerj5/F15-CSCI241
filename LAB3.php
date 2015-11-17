@@ -14,13 +14,13 @@
 		
 <form method="post" action="LAB3.php">
 	Invoice Item 1: <input type="text" name="firstInvoice"></input><br/>
-	Item Price 1: <input type="text" name="firstPrice"></input><br/>
+	Item Price 1:   <input type="text" name="firstPrice"></input><br/><br/>
 	Invoice Item 2: <input type="text" name="secondInvoice"></input><br/>
-	Item Price 2: <input type="text" name="secondPrice"></input><br/>
+	Item Price 2:   <input type="text" name="secondPrice"></input><br/><br/>
 	Invoice Item 3: <input type="text" name="thirdInvoice"></input><br/>
-	Item Price 3: <input type="text" name="thirdPrice"></input><br/>
+	Item Price 3:   <input type="text" name="thirdPrice"></input><br/><br/>
 	Invoice Item 4: <input type="text" name="fourthInvoice"></input><br/>
-	Item Price 4: <input type="text" name="fourthPrice"></input><br/>
+	Item Price 4:   <input type="text" name="fourthPrice"></input><br/><br/>
 	<br/>	
 	Check this box you want to include tax at a rate of 7%:<input type="checkbox" value="applyTax" name="applyTax">
 	<input type="submit" value="submit" name="submit"><br/>
