@@ -6,11 +6,11 @@
  <form name="table" id="table" action="lab4.php" method="post">
       <h1>Multiplication Table Creator</h1>
       <p>
-    <label for="width">Rows:</label>
+    <label for="width">Start Number:</label>
     <input type="number" name="width" id="width" />
       </p>
       <p>
-    <label for="height">Columns:</label>
+    <label for="height">End number:</label>
     <input type="number" name="height" id="height" />
       </p>
     <input type="submit" value="submit" name="submit">
