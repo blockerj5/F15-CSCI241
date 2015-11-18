@@ -14,8 +14,6 @@
 			<input type="submit" value="submit" name="submit">
 		</form>
 <?php
-
-
 if(isset($_POST['submit']))
  {
 $employeeId =$_POST['employeeId'];
@@ -32,63 +30,68 @@ if($hoursWorked <0)
 	echo "Hours worked cannot be below 0";
 	exit(1);
 }
-
-
-
-
 $totalHours=$hoursWorked;
-
-
 if ($hoursWorked > 40) 
-{
-	
-	$OvertimeHours=$hoursWorked - 40;
-	$hoursWorked=40;
-	$OvertimePay=$OvertimeHours * ($hourlyWage * 1.50);
-		
-} 
+{$overtimePay=overtime($overtimeHours, $hoursWorked,$hourlyWage);} 
 else 
+{$overtimeHours=0; $overtimePay=0;}
+
+$finalWage=finalWage($hourlyWage, $hoursWorked, &$totalWage, $overtimePay);
+//Table For Paystub
+paystub($employeeName,$employeeId, $hoursWorked, $totalWage, $overtimeHours, $overtimePay, $totalHours,$finalWage);
+//Disbursment Table
+disbursmentTable($finalWage);
+ }
+
+
+
+
+function finalWage($hourlyWage, $hoursWorked, &$totalWage, $overtimePay)
 {
-	$OvertimeHours=0;
-	$OvertimePay=0;
+	$totalWage = $hourlyWage * $hoursWorked;
+	return $totalWage + $overtimePay;
 }
 
+function overtime(&$overtimeHours, &$hoursWorked, $hourlyWage)
+	{
+	  $overtimeHours=$hoursWorked - 40;
+	  $hoursWorked=40;
+	  return $overtimeHours * ($hourlyWage * 1.50);	
+	}
 
-$totalWage = $hourlyWage * $hoursWorked;
-$finalWage =$totalWage + $OvertimePay;
-
+ function paystub($employeeName,$employeeId, $hoursWorked, $totalWage, $overtimeHours, $overtimePay, $totalHours,$finalWage)
+ {
+ 	echo "PayStub For: ".$employeeName. "</br>";
+	echo"Name: ".$employeeName."</br>";
+	echo"ID: ".$employeeId."</br>";
+	echo "<table border=1>";
+	echo "<tr>";
+	echo "<td> </td>";
+	echo "<td> Hours </td>";
+	echo "<td> Gross Pay </td>";
+	echo "</tr>";
+	echo "<tr>";
+	echo "<td> Regular: </td>";
+	echo "<td>" .$hoursWorked ."</td>";
+	echo "<td>" .$totalWage."</td>";
+	echo "</tr>";
+	echo "<tr>";
+	echo "<td> Overtime: </td>";
+	echo "<td>" .$overtimeHours."</td>";
+	echo "<td>" .$overtimePay."</td>";
+	echo "</tr>";
+	echo "<tr>";
+	echo "<td>Total: </td>";
+	echo "<td>" .$totalHours."</td>";
+	echo "<td>" .$finalWage."</td>";
+	echo "</tr>";
+	echo "</table>";
+ } 
+ 
+  
+function disbursmentTable($finalWage)
+{
 $currency = array(100,50,20,10,5,1,0.25,0.10,0.05,0.01);
-
-//Table For Paystub
-echo "PayStub For: ".$employeeName. "</br>";
-echo"Name: ".$employeeName."</br>";
-echo"ID: ".$employeeId."</br>";
-echo "<table border=1>";
-echo "<tr>";
-echo "<td> </td>";
-echo "<td> Hours </td>";
-echo "<td> Gross Pay </td>";
-echo "</tr>";
-echo "<tr>";
-echo "<td> Regular: </td>";
-echo "<td>" .$hoursWorked ."</td>";
-echo "<td>" .$totalWage."</td>";
-echo "</tr>";
-echo "<tr>";
-echo "<td> Overtime: </td>";
-echo "<td>" .$OvertimeHours."</td>";
-echo "<td>" .$OvertimePay."</td>";
-echo "</tr>";
-echo "<tr>";
-echo "<td>Total: </td>";
-echo "<td>" .$totalHours."</td>";
-echo "<td>" .$finalWage."</td>";
-echo "</tr>";
-echo "</table>";
-
-
-
-//Disbursment Table
 echo "<h1>Disbursement</h1>";
 echo "<table border=1>";
 echo "<tr>";
@@ -99,35 +102,28 @@ echo "</tr>";
 foreach($currency as $nextcurrency)
 {
 	$currentcurrency=$nextcurrency;
-	//settype($BillQuantity,"integer");
+	//settype($billQuantity,"integer");
 	 
 	if(($finalWage/$currentcurrency)>=1)
 	{
 	
-	$BillQuantity=$finalWage/$currentcurrency;
-	
-	$BillQuantity=floor($finalWage/$currentcurrency);
-	
-	
-	
-	$disbursed=$BillQuantity*$currentcurrency;
+	$billQuantity=$finalWage/$currentcurrency;
+	$billQuantity=floor($finalWage/$currentcurrency);
+	$disbursed=$billQuantity*$currentcurrency;
 	$finalWage=$finalWage-$disbursed;
 	} 
 	else {
-		$BillQuantity=0;
+		$billQuantity=0;
 		$disbursed=0;
 	}
 	echo "<tr>";
 	echo "<td>".$nextcurrency."</td>";
-	echo "<td>".$BillQuantity."</td>";
+	echo "<td>".$billQuantity."</td>";
 	echo "<td>".$disbursed."</td>";
 	echo "</tr>";
 }
-
 echo "</table>";
-
-
- }
-    
+}
+ 
 ?>
 </html>
