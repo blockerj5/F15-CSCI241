@@ -32,7 +32,7 @@ if($hoursWorked <0)
 	echo "Hours worked cannot be below 0";
 	exit(1);
 }
-}
+
 
 
 
