@@ -36,7 +36,7 @@ if ($hoursWorked > 40)
 else 
 {$overtimeHours=0; $overtimePay=0;}
 
-$finalWage=finalWage($hourlyWage, $hoursWorked, &$totalWage, $overtimePay);
+$finalWage=finalWage($hourlyWage, $hoursWorked, $totalWage, $overtimePay);
 //Table For Paystub
 paystub($employeeName,$employeeId, $hoursWorked, $totalWage, $overtimeHours, $overtimePay, $totalHours,$finalWage);
 //Disbursment Table
