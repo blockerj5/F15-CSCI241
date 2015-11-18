@@ -21,10 +21,23 @@ if(isset($_POST['submit']))
 $employeeId =$_POST['employeeId'];
 $employeeName =$_POST['employeeName'];
 $hourlyWage =$_POST['hourlyWage'];
+if($hourlyWage <0)
+{
+	echo "Hourly wage cannot be below 0";
+	exit(1);
+}
 $hoursWorked =$_POST['hoursworked'];
+if($hoursWorked <0)
+{
+	echo "Hours worked cannot be below 0";
+	exit(1);
+}
+}
+
 
 
 $totalHours=$hoursWorked;
+
 
 if ($hoursWorked > 40) 
 {
