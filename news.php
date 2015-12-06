@@ -27,7 +27,7 @@ require_once("header.php");
 				{
 					echo "<h4>" . $articles[$_GET["id"]][0] . "</h4>";
 					echo $articles[$_GET["id"]][1];
-					echo "<br><br>";
+					echo "<br/><br/>";
 					echo "<a href='index.php'>Home</a>";					
 				}
 				else
