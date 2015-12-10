@@ -1,0 +1,45 @@
+#content {
+    width: 500px;
+    margin: 0 auto;
+}
+h1{
+	text-align: center;
+}
+
+a{
+	color:#ffaa80;
+}
+li {
+	padding: 45px;
+    display: inline;
+}
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+} 
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+#section {
+    background-color:  #003d4d;
+    color:white;
+    margin:20px;
+    padding:20px;
+} 
+#submit{
+	 margin-left: 190px;
+}
