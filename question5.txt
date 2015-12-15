@@ -1,0 +1,3 @@
+The double posting problem is when a user quickly submits forms of data twice.
+You use redirect and get to prevent users from submitting forms twice, by 
+only allowing the user to submit once.
